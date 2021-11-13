@@ -1,7 +1,16 @@
 package com.hackerrank.stocktrade.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.hackerrank.stocktrade.model.Trade;
+import com.hackerrank.stocktrade.service.TradeService;
 /**
  * 
  * @author Bijan Nayak
@@ -10,8 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping(value = "/trades")
+@RequestMapping(value = "/")
 public class TradesController {
+	
+	@Autowired
+	private TradeService tradeService;
 	
 	/**
 	 * Add new trades
@@ -20,6 +32,10 @@ public class TradesController {
 	 * if the trade with same id exists then the error code is 400 
 	 * else its 201
 	 */
+	@PostMapping("/trades")
+	public void addNewTradePost(@RequestBody Trade trade) {
+		tradeService.addNewTrade(trade);
+	}
     
 	/**
 	 * Return a trade filtered by the ID
@@ -35,6 +51,10 @@ public class TradesController {
 	 * GET /trades
 	 * JSON array should be stored in ascending order of Trade id
 	 */
+	@GetMapping("/trades")
+	public List<Trade> getAllTrades(){
+		return tradeService.getAllTradeList();
+	}
 	
 	/**
 	 * Return all trade records filtered by user id
