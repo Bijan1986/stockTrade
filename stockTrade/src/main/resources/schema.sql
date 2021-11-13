@@ -9,7 +9,6 @@ CREATE TABLE USER (
 );
 
 
-
 /***************************************************************************************
  *  TRADE                                                                      
  *  this is the trades table which has below mentioned fields along with 
