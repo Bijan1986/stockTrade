@@ -35,17 +35,10 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "userId")
 	private List<Trade> trades;
 
-	public User(String name) {
-		this.name = name;
-	}
-
-	public User(@NotNull(message = "user id can not be null or void") Long id,
-			@NotNull(message = "user name can not be null or void") String name) {
+	public User(Long id, String name) {
 		this.id = id;
 		this.name = name;
-	}
-
-	
+	}	
 
 	public User() {
 

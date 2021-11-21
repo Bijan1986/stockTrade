@@ -1,5 +1,6 @@
 package com.hackerrank.stocktrade.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class TradeService {
 	
 	public List<Trade> getTradesByUserId(Long userId){
 		return tradeRepository.getAllTradesByUserId(userId);
+	}
+	
+	public List<Trade> getTradesByStockSymbolAndTradeTypeFilterdByDate(String stockSymbol, String tradeType, Date startDate, Date endDate){
+		
+		return tradeRepository.getAllTradeByStockSymbolAndTradeType(stockSymbol, tradeType, startDate, endDate);
 	}
 
 }
