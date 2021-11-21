@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,11 @@ public class TradesController {
 	 * else 200
 	 * 
 	 */
+	@GetMapping("/trades/{id}")
+	public  Trade getTradeById( @PathVariable(value = "id") Long id){
+		
+		return tradeService.findById(id);
+	}
 	
 	/**
 	 * Return all trades
@@ -53,13 +59,23 @@ public class TradesController {
 	 */
 	@GetMapping("/trades")
 	public List<Trade> getAllTrades(){
-		return tradeService.getAllTradeList();
+		List<Trade> trades = tradeService.getAllTradeList();
+		return trades;
 	}
 	
 	/**
 	 * Return all trade records filtered by user id
 	 * /trades/users/{userid} 404/200
 	 */
+	
+	@GetMapping("/trades/users/{userid}")
+	public List<Trade> getAllTradesByUserId(@PathVariable(value = "userid") Long userid){
+		List<Trade> trades = tradeService.getTradesByUserId(userid);
+		return trades;
+	}
+	
+	
+	
 	
 	/**
 	 * Return trade records filtered by stock symbol and the trade Type by the given data range
