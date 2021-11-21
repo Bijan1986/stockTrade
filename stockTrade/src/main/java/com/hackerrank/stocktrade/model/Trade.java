@@ -1,11 +1,10 @@
 package com.hackerrank.stocktrade.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +29,7 @@ public class Trade {
 	@Column(name = "TRADE_TYPE")
 	private String type;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-			CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "USER_ID")
 	private User userId;
 
@@ -45,12 +43,12 @@ public class Trade {
 	private Float price;
 
 	@Column(name = "TRADE_TIMESTAMP") // 2013-09-05 05:12:46.855856
-	private Timestamp timestamp;
+	private Date timestamp;
 
-	public Trade(String type, User user, String symbol, Integer shares, Float price, Timestamp timestamp) {
-		super();
+	public Trade(Long id, String type, User userId, String symbol, Integer shares, Float price, Date timestamp) {
+		this.id = id;
 		this.type = type;
-		this.userId = user;
+		this.userId = userId;
 		this.symbol = symbol;
 		this.shares = shares;
 		this.price = price;
@@ -109,11 +107,11 @@ public class Trade {
 		this.price = price;
 	}
 
-	public Timestamp getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 
