@@ -2,6 +2,7 @@ package com.hackerrank.stocktrade.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,8 @@ public class TradeService {
 		tradeRepository.save(trade);
 	}
 	
-	public Trade findById(Long tradeId) {
-		return tradeRepository.findById(tradeId).get();
+	public Optional<Trade> findById(Long tradeId) {
+		return tradeRepository.findById(tradeId);
 	}
 	
 	public List<Trade> getTradesByUserId(Long userId){
