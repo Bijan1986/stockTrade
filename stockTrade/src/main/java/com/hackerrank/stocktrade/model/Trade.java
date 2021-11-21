@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,22 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 /**
  * 
  * @author Bijan Nayak
  *
  */
-@Data
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity(name = "TRADE")
 public class Trade {
 	@Id
@@ -39,9 +30,10 @@ public class Trade {
 	@Column(name = "TRADE_TYPE")
 	private String type;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "USER_ID")
-	private User user;
+	private User userId;
 
 	@Column(name = "TRADE_SYMBOL")
 	private String symbol;
@@ -58,10 +50,70 @@ public class Trade {
 	public Trade(String type, User user, String symbol, Integer shares, Float price, Timestamp timestamp) {
 		super();
 		this.type = type;
-		this.user = user;
+		this.userId = user;
 		this.symbol = symbol;
 		this.shares = shares;
 		this.price = price;
+		this.timestamp = timestamp;
+	}
+
+	public Trade() {
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public User getUserId() {
+		return userId;
+	}
+
+	public void setUserId(User userId) {
+		this.userId = userId;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
+	public Integer getShares() {
+		return shares;
+	}
+
+	public void setShares(Integer shares) {
+		this.shares = shares;
+	}
+
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
 	}
 

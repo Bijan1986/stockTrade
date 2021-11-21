@@ -22,11 +22,20 @@ public class TradeService {
 	private TradeRepository tradeRepository;
 
 	public List<Trade> getAllTradeList() {
-		return tradeRepository.findAll();
+		List<Trade> trades = tradeRepository.findAll();
+		return trades;
 	}
 	
 	public void addNewTrade(Trade trade) {
 		tradeRepository.save(trade);
+	}
+	
+	public Trade findById(Long tradeId) {
+		return tradeRepository.findById(tradeId).get();
+	}
+	
+	public List<Trade> getTradesByUserId(Long userId){
+		return tradeRepository.getAllTradesByUserId(userId);
 	}
 
 }
