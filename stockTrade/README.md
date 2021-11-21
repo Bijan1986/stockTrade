@@ -7,26 +7,23 @@
 with corresponding operations .</p>
 
 > postman collection is added to the project 
-
-![postman folder](./images/postman.jpg)
+![postman](images/postman.JPG)
 
 
 ### Open api :
 
 the link for open api is : http://localhost:8084/swagger-ui.html
 
-
-![open api screenshot](./images/openapi.jpg)
+![openapi](images/openapi.JPG)
 
 
 ### data and schema sql files : 
-
-![data and schema](./images/dataAndSchema.jpg)
+![dataschema](images/dataAndSchema.JPG)
 
 ### H2 in memory database:
 
 > path: localhost:8084/h2-console
 
-![H2 Console](./images/h2console.jpg)
+![h2console](images/h2console.JPG)
 
 
