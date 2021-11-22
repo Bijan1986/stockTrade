@@ -41,21 +41,20 @@ public class Trade {
 
 	@Column(name = "TRADE_SYMBOL")
 	private String symbol;
-	
 
 	@Min(value = 10, message = "Trade share value can't be less than 10 or more than 30")
 	@Max(value = 30, message = "Trade share value can't be less than 10 or more than 30")
 	@Column(name = "TRADE_SHARES")
 	private Integer shares;
 
-	@Digits(integer=3, fraction=2)
+	@Digits(integer = 3, fraction = 2)
 	@Column(name = "TRADE_PRICE")
-	private Float price;
+	private Double price;
 
 	@Column(name = "TRADE_TIMESTAMP")
 	private Date timestamp;
 
-	public Trade(Long id, TradeType type, User userId, String symbol, Integer shares, Float price, Date timestamp) {
+	public Trade(Long id, TradeType type, User userId, String symbol, Integer shares, Double price, Date timestamp) {
 		this.id = id;
 		this.type = type;
 		this.userId = userId;
@@ -109,11 +108,11 @@ public class Trade {
 		this.shares = shares;
 	}
 
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

@@ -24,5 +24,8 @@ public interface TradeRepository extends JpaRepository<Trade, Long> {
 	
 	@Query(value = "SELECT * FROM TRADE WHERE TRADE_TYPE LIKE ?2 AND TRADE_SYMBOL LIKE ?1 AND TRADE_TIMESTAMP between ?3 AND ?4", nativeQuery = true)
 	List<Trade> getAllTradeByStockSymbolAndTradeType(String stockSymbol , String tradeType, Date startDate, Date endDate);
+	
+	@Query(value = "SELECT TRADE_PRICE FROM TRADE Where TRADE_SYMBOL = ?1 AND TRADE_TIMESTAMP between ?2 AND ?3", nativeQuery = true)
+	List<Float> getTradePricesOnDateRange(String stockSymbol, String startDate, String endDate);
 
 }
